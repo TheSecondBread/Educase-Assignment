@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const app = express()
 const schoolRouter =require("./router/schoolRouter")
 const dbMiddleware = require("./middlewares/connectMysql")
+require("dotenv").config()
+
 // const createTable = require("./models/createTable")
 
 
@@ -33,4 +35,6 @@ app.get("/",(req,res)=>{
 //shcool router
 app.use("/",schoolRouter)
 
-app.listen(8000,()=>console.log("Server started"))
+
+const port=process.env.PORT || 8000;
+app.listen(port,()=>console.log("Server started"))
